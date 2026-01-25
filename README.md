@@ -2,6 +2,10 @@
 
 A powerful, flexible Astro starter template for building business and church websites with provider-agnostic CMS, forms, and multi-language support.
 
+## 👶 New Here? Start Here!
+
+**Absolute beginner?** Read [START_HERE.md](./START_HERE.md) first - it's written so simply, anyone can follow it!
+
 ## 🚀 Features
 
 ### Core
