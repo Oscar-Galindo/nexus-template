@@ -375,6 +375,20 @@ npm run verify
 
 ---
 
+## 🔄 Bonus: Moving from WordPress?
+
+If your client has an old WordPress site, you can copy all their content automatically!
+
+```bash
+npm run migrate:wordpress
+```
+
+Then type the old WordPress website address and it'll copy everything! 🎉
+
+**Read more**: [WORDPRESS_MIGRATION.md](./WORDPRESS_MIGRATION.md)
+
+---
+
 ## 📚 What to Read Next
 
 **After you get your website running**, read these:
@@ -382,6 +396,7 @@ npm run verify
 1. **QUICK_START.md** - More details
 2. **README.md** - Full overview
 3. **FEATURE_GUIDE.md** - What you can add later
+4. **WORDPRESS_MIGRATION.md** - Move from WordPress
 
 ---
 

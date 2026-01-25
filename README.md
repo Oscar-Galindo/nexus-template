@@ -100,6 +100,9 @@ Visit:
 - [ADVANCED_FEATURES.md](./ADVANCED_FEATURES.md) - Optional features for client projects
 - [INTEGRATIONS.md](./INTEGRATIONS.md) - Common integration patterns
 
+### Migration
+- [WORDPRESS_MIGRATION.md](./WORDPRESS_MIGRATION.md) - Migrate from WordPress (super easy!)
+
 ### System Documentation
 - [CMS Abstraction Layer](./src/lib/cms/USAGE.md) - Content management
 - [Forms System](./src/lib/forms/USAGE.md) - Form submissions

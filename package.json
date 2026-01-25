@@ -9,7 +9,14 @@
     "preview": "astro preview",
     "astro": "astro",
     "setup": "./setup.sh",
-    "verify": "./verify-setup.sh"
+    "verify": "./verify-setup.sh",
+    "migrate:wordpress": "./scripts/migrate/wordpress-migration.sh",
+    "migrate:wp:contentful": "node scripts/wordpress-to-contentful.cjs",
+    "migrate:wp:sanity": "node scripts/wordpress-to-sanity.mjs",
+    "test:ghl:connection": "node scripts/test-ghl-connection.js",
+    "test:ghl:forms": "node scripts/test-ghl-forms.js",
+    "test:ghl:opportunity": "node scripts/test-ghl-opportunity.js",
+    "build:protected": "node scripts/build-protected.js"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.0",
@@ -23,8 +30,11 @@
     "@sanity/client": "^6.22.0",
     "@sanity/image-url": "^1.0.2",
     "astro": "^5.1.4",
+    "axios": "^1.7.9",
     "cloudinary": "^2.5.1",
     "contentful": "^11.8.0",
+    "contentful-management": "^11.37.2",
+    "dotenv": "^16.4.7",
     "gray-matter": "^4.0.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
