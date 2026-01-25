@@ -1,0 +1,194 @@
+---
+import { t, getLocaleFromUrl, locales, localeNames } from '@/i18n';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
+
+const locale = getLocaleFromUrl(Astro.url);
+const currentYear = new Date().getFullYear();
+---
+
+<!DOCTYPE html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>i18n Demo - {t(locale, 'nav.home')}</title>
+  </head>
+  <body class="bg-gray-50 min-h-screen">
+    <div class="max-w-4xl mx-auto py-12 px-4">
+      <!-- Header -->
+      <header class="mb-12">
+        <div class="flex items-center justify-between mb-6">
+          <h1 class="text-4xl font-bold text-gray-900">
+            {t(locale, 'nav.home')} - i18n Demo
+          </h1>
+          <LanguageSwitcher 
+            currentLocale={locale} 
+            currentPath={Astro.url.pathname}
+            client:load 
+          />
+        </div>
+        <p class="text-lg text-gray-600">
+          Testing the internationalization system with type-safe translations
+        </p>
+      </header>
+
+      <!-- Current Language Info -->
+      <section class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Current Language</h2>
+        <div class="space-y-2">
+          <p><strong>Locale Code:</strong> {locale}</p>
+          <p><strong>Language Name:</strong> {localeNames[locale]}</p>
+          <p><strong>Available Locales:</strong> {locales.join(', ')}</p>
+        </div>
+      </section>
+
+      <!-- Navigation Translations -->
+      <section class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Navigation ({t(locale, 'nav.home')})</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="p-4 bg-gray-50 rounded">
+            <p class="text-sm text-gray-500">nav.home</p>
+            <p class="font-medium">{t(locale, 'nav.home')}</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded">
+            <p class="text-sm text-gray-500">nav.about</p>
+            <p class="font-medium">{t(locale, 'nav.about')}</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded">
+            <p class="text-sm text-gray-500">nav.services</p>
+            <p class="font-medium">{t(locale, 'nav.services')}</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded">
+            <p class="text-sm text-gray-500">nav.blog</p>
+            <p class="font-medium">{t(locale, 'nav.blog')}</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded">
+            <p class="text-sm text-gray-500">nav.events</p>
+            <p class="font-medium">{t(locale, 'nav.events')}</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded">
+            <p class="text-sm text-gray-500">nav.contact</p>
+            <p class="font-medium">{t(locale, 'nav.contact')}</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Form Translations -->
+      <section class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Form Labels</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="p-4 bg-gray-50 rounded">
+            <p class="text-sm text-gray-500">forms.firstName</p>
+            <p class="font-medium">{t(locale, 'forms.firstName')}</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded">
+            <p class="text-sm text-gray-500">forms.lastName</p>
+            <p class="font-medium">{t(locale, 'forms.lastName')}</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded">
+            <p class="text-sm text-gray-500">forms.email</p>
+            <p class="font-medium">{t(locale, 'forms.email')}</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded">
+            <p class="text-sm text-gray-500">forms.phone</p>
+            <p class="font-medium">{t(locale, 'forms.phone')}</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded">
+            <p class="text-sm text-gray-500">forms.submit</p>
+            <p class="font-medium">{t(locale, 'forms.submit')}</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded">
+            <p class="text-sm text-gray-500">forms.sending</p>
+            <p class="font-medium">{t(locale, 'forms.sending')}</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Common Translations -->
+      <section class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Common Phrases</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="p-4 bg-gray-50 rounded">
+            <p class="text-sm text-gray-500">common.readMore</p>
+            <p class="font-medium">{t(locale, 'common.readMore')}</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded">
+            <p class="text-sm text-gray-500">common.learnMore</p>
+            <p class="font-medium">{t(locale, 'common.learnMore')}</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded">
+            <p class="text-sm text-gray-500">common.viewAll</p>
+            <p class="font-medium">{t(locale, 'common.viewAll')}</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded">
+            <p class="text-sm text-gray-500">common.loading</p>
+            <p class="font-medium">{t(locale, 'common.loading')}</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded">
+            <p class="text-sm text-gray-500">common.share</p>
+            <p class="font-medium">{t(locale, 'common.share')}</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded">
+            <p class="text-sm text-gray-500">common.noResults</p>
+            <p class="font-medium">{t(locale, 'common.noResults')}</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Parameter Interpolation -->
+      <section class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Parameter Interpolation</h2>
+        <div class="p-4 bg-gray-50 rounded">
+          <p class="text-sm text-gray-500 mb-2">footer.copyright with params</p>
+          <p class="font-medium text-lg">
+            {t(locale, 'footer.copyright', { year: currentYear, siteName: 'Nexus Template' })}
+          </p>
+        </div>
+      </section>
+
+      <!-- Blog & Events -->
+      <section class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Content Sections</h2>
+        <div class="space-y-4">
+          <div class="p-4 bg-blue-50 rounded">
+            <h3 class="font-semibold text-blue-900 mb-2">{t(locale, 'blog.recentPosts')}</h3>
+            <div class="text-sm space-y-1">
+              <p>{t(locale, 'blog.postedOn')}: Jan 15, 2025</p>
+              <p>{t(locale, 'blog.by')}: John Doe</p>
+              <button class="mt-2 text-blue-600 hover:underline">
+                {t(locale, 'common.readMore')} →
+              </button>
+            </div>
+          </div>
+
+          <div class="p-4 bg-green-50 rounded">
+            <h3 class="font-semibold text-green-900 mb-2">{t(locale, 'events.upcomingEvents')}</h3>
+            <div class="text-sm space-y-1">
+              <p>{t(locale, 'events.when')}: February 20, 2025</p>
+              <p>{t(locale, 'events.where')}: Community Center</p>
+              <button class="mt-2 text-green-600 hover:underline">
+                {t(locale, 'events.register')} →
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="text-center py-8 border-t border-gray-200">
+        <p class="text-gray-600">
+          {t(locale, 'footer.copyright', { year: currentYear, siteName: 'Nexus Template' })}
+        </p>
+        <div class="mt-4 space-x-4">
+          <a href="#" class="text-blue-600 hover:underline">
+            {t(locale, 'footer.privacyPolicy')}
+          </a>
+          <span class="text-gray-400">|</span>
+          <a href="#" class="text-blue-600 hover:underline">
+            {t(locale, 'footer.termsOfService')}
+          </a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

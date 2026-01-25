@@ -1,0 +1,346 @@
+---
+// You can fetch content from your collections here
+// import { getCollection } from 'astro:content';
+// const testimonials = await getCollection('testimonials');
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nexus Template - Modern Business Starter</title>
+    <meta name="description" content="A modern, flexible template for your business or organization" />
+  </head>
+  <body class="bg-white text-gray-900">
+
+    <!-- Header/Navigation -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+      <nav class="container mx-auto px-4 py-4">
+        <div class="flex items-center justify-between">
+          <div class="text-2xl font-bold text-blue-600">Nexus</div>
+          <div class="hidden md:flex gap-8">
+            <a href="#features" class="text-gray-600 hover:text-blue-600 transition">Features</a>
+            <a href="#about" class="text-gray-600 hover:text-blue-600 transition">About</a>
+            <a href="#testimonials" class="text-gray-600 hover:text-blue-600 transition">Testimonials</a>
+            <a href="#contact" class="text-gray-600 hover:text-blue-600 transition">Contact</a>
+          </div>
+          <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+            Get Started
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-blue-50 to-indigo-100 py-20 md:py-32">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+            Build Something Amazing
+          </h1>
+          <p class="text-xl md:text-2xl text-gray-600 mb-8">
+            A modern, flexible template to kickstart your next project.
+            Customizable, fast, and ready to deploy.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#contact" class="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition shadow-lg">
+              Get Started
+            </a>
+            <a href="#features" class="bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-50 transition border-2 border-blue-600">
+              Learn More
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">Features</h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            Everything you need to get started quickly and scale efficiently
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <!-- Feature 1 -->
+          <div class="bg-white p-8 rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-lg transition">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+              <span class="text-2xl">⚡</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Lightning Fast</h3>
+            <p class="text-gray-600">
+              Built with Astro for optimal performance and blazing fast load times
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="bg-white p-8 rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-lg transition">
+            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+              <span class="text-2xl">🎨</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Fully Customizable</h3>
+            <p class="text-gray-600">
+              UnoCSS utility classes make it easy to customize every aspect of your site
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="bg-white p-8 rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-lg transition">
+            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+              <span class="text-2xl">📱</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Responsive Design</h3>
+            <p class="text-gray-600">
+              Looks perfect on any device, from mobile phones to desktop screens
+            </p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="bg-white p-8 rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-lg transition">
+            <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+              <span class="text-2xl">🔧</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Easy Integration</h3>
+            <p class="text-gray-600">
+              Connect with popular CMSs, forms, and third-party services effortlessly
+            </p>
+          </div>
+
+          <!-- Feature 5 -->
+          <div class="bg-white p-8 rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-lg transition">
+            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+              <span class="text-2xl">🚀</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Production Ready</h3>
+            <p class="text-gray-600">
+              Optimized for SEO, accessibility, and performance out of the box
+            </p>
+          </div>
+
+          <!-- Feature 6 -->
+          <div class="bg-white p-8 rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-lg transition">
+            <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+              <span class="text-2xl">💼</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Business Focused</h3>
+            <p class="text-gray-600">
+              Built-in forms, content management, and conversion-optimized components
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-5xl mx-auto">
+          <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 class="text-4xl font-bold text-gray-900 mb-6">
+                Why Choose Nexus?
+              </h2>
+              <p class="text-lg text-gray-600 mb-6">
+                We've built this template with modern web standards and best practices in mind.
+                Whether you're building a business site, portfolio, or web application,
+                Nexus gives you a solid foundation to build upon.
+              </p>
+              <ul class="space-y-4">
+                <li class="flex items-start gap-3">
+                  <span class="text-green-600 text-xl">✓</span>
+                  <span class="text-gray-700">Built with the latest web technologies</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-green-600 text-xl">✓</span>
+                  <span class="text-gray-700">Comprehensive documentation and examples</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-green-600 text-xl">✓</span>
+                  <span class="text-gray-700">Regular updates and improvements</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-green-600 text-xl">✓</span>
+                  <span class="text-gray-700">Community support and resources</span>
+                </li>
+              </ul>
+            </div>
+            <div class="bg-gradient-to-br from-blue-400 to-indigo-600 rounded-2xl h-96 flex items-center justify-center text-white text-6xl">
+              🎯
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">What People Say</h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            Don't just take our word for it - hear from our satisfied users
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <!-- Testimonial 1 -->
+          <div class="bg-white p-8 rounded-xl border border-gray-200 shadow-sm">
+            <div class="flex gap-1 mb-4">
+              <span class="text-yellow-400">★</span>
+              <span class="text-yellow-400">★</span>
+              <span class="text-yellow-400">★</span>
+              <span class="text-yellow-400">★</span>
+              <span class="text-yellow-400">★</span>
+            </div>
+            <p class="text-gray-700 mb-6 italic">
+              "This template saved me weeks of development time. The code is clean,
+              well-organized, and easy to customize."
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full"></div>
+              <div>
+                <div class="font-semibold">John Smith</div>
+                <div class="text-sm text-gray-500">CEO, Tech Startup</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="bg-white p-8 rounded-xl border border-gray-200 shadow-sm">
+            <div class="flex gap-1 mb-4">
+              <span class="text-yellow-400">★</span>
+              <span class="text-yellow-400">★</span>
+              <span class="text-yellow-400">★</span>
+              <span class="text-yellow-400">★</span>
+              <span class="text-yellow-400">★</span>
+            </div>
+            <p class="text-gray-700 mb-6 italic">
+              "Outstanding performance and beautiful design. My clients love their new website!"
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-full"></div>
+              <div>
+                <div class="font-semibold">Sarah Johnson</div>
+                <div class="text-sm text-gray-500">Freelance Developer</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="bg-white p-8 rounded-xl border border-gray-200 shadow-sm">
+            <div class="flex gap-1 mb-4">
+              <span class="text-yellow-400">★</span>
+              <span class="text-yellow-400">★</span>
+              <span class="text-yellow-400">★</span>
+              <span class="text-yellow-400">★</span>
+              <span class="text-yellow-400">★</span>
+            </div>
+            <p class="text-gray-700 mb-6 italic">
+              "Perfect starting point for any project. Highly recommended for developers
+              who value quality and efficiency."
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full"></div>
+              <div>
+                <div class="font-semibold">Mike Chen</div>
+                <div class="text-sm text-gray-500">Product Manager</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 bg-gradient-to-br from-blue-600 to-indigo-700 text-white">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto text-center">
+          <div>
+            <div class="text-5xl font-bold mb-2">10k+</div>
+            <div class="text-blue-100">Active Users</div>
+          </div>
+          <div>
+            <div class="text-5xl font-bold mb-2">99%</div>
+            <div class="text-blue-100">Satisfaction Rate</div>
+          </div>
+          <div>
+            <div class="text-5xl font-bold mb-2">50+</div>
+            <div class="text-blue-100">Components</div>
+          </div>
+          <div>
+            <div class="text-5xl font-bold mb-2">24/7</div>
+            <div class="text-blue-100">Support</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-4xl font-bold text-gray-900 mb-6">
+            Ready to Get Started?
+          </h2>
+          <p class="text-xl text-gray-600 mb-8">
+            Join thousands of satisfied users and start building your next project today
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/forms-demo" class="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition shadow-lg">
+              Try Our Forms
+            </a>
+            <a href="/i18n-demo" class="bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-50 transition border-2 border-blue-600">
+              View Demos
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <div class="text-2xl font-bold mb-4">Nexus</div>
+            <p class="text-gray-400">
+              Building the future of web templates, one project at a time.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-4">Product</h3>
+            <ul class="space-y-2 text-gray-400">
+              <li><a href="#features" class="hover:text-white transition">Features</a></li>
+              <li><a href="#" class="hover:text-white transition">Pricing</a></li>
+              <li><a href="#" class="hover:text-white transition">Documentation</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-4">Company</h3>
+            <ul class="space-y-2 text-gray-400">
+              <li><a href="#about" class="hover:text-white transition">About</a></li>
+              <li><a href="#" class="hover:text-white transition">Blog</a></li>
+              <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-4">Legal</h3>
+            <ul class="space-y-2 text-gray-400">
+              <li><a href="#" class="hover:text-white transition">Privacy</a></li>
+              <li><a href="#" class="hover:text-white transition">Terms</a></li>
+              <li><a href="#" class="hover:text-white transition">License</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+          <p>&copy; 2026 Nexus Template. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>

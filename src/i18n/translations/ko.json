@@ -1,0 +1,35 @@
+{
+  "nav": {
+    "home": "홈",
+    "about": "소개",
+    "services": "서비스",
+    "sermons": "설교",
+    "events": "행사",
+    "blog": "블로그",
+    "contact": "연락처",
+    "give": "헌금",
+    "prayerRequest": "기도 요청"
+  },
+  "forms": {
+    "firstName": "이름",
+    "lastName": "성",
+    "email": "이메일",
+    "phone": "전화번호",
+    "message": "메시지",
+    "prayerRequest": "기도 요청",
+    "keepPrivate": "이 요청을 비공개로 유지",
+    "needsPastoralCare": "목사님과 상담을 원합니다",
+    "submit": "제출",
+    "sending": "전송 중...",
+    "success": "감사합니다! 곧 연락드리겠습니다.",
+    "error": "오류가 발생했습니다. 다시 시도해 주세요."
+  },
+  "common": {
+    "readMore": "더 읽기",
+    "learnMore": "자세히 보기",
+    "viewAll": "전체 보기",
+    "watchNow": "지금 보기",
+    "loading": "로딩 중...",
+    "noResults": "결과가 없습니다"
+  }
+}

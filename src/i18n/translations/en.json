@@ -1,0 +1,66 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "sermons": "Sermons",
+    "events": "Events",
+    "blog": "Blog",
+    "contact": "Contact",
+    "give": "Give",
+    "prayerRequest": "Prayer Request"
+  },
+  "forms": {
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "businessName": "Business Name",
+    "website": "Website",
+    "service": "Service Interested In",
+    "budget": "Budget",
+    "timeline": "Timeline",
+    "prayerRequest": "Prayer Request",
+    "keepPrivate": "Keep this request private",
+    "needsPastoralCare": "I would like to speak with a pastor",
+    "submit": "Submit",
+    "sending": "Sending...",
+    "success": "Thank you! We'll be in touch soon.",
+    "error": "Something went wrong. Please try again.",
+    "required": "This field is required",
+    "invalidEmail": "Please enter a valid email"
+  },
+  "common": {
+    "readMore": "Read More",
+    "learnMore": "Learn More",
+    "viewAll": "View All",
+    "watchNow": "Watch Now",
+    "listenNow": "Listen Now",
+    "backTo": "Back to",
+    "share": "Share",
+    "loading": "Loading...",
+    "noResults": "No results found"
+  },
+  "blog": {
+    "recentPosts": "Recent Posts",
+    "allPosts": "All Posts",
+    "categories": "Categories",
+    "tags": "Tags",
+    "postedOn": "Posted on",
+    "by": "by"
+  },
+  "events": {
+    "upcomingEvents": "Upcoming Events",
+    "pastEvents": "Past Events",
+    "allEvents": "All Events",
+    "when": "When",
+    "where": "Where",
+    "register": "Register"
+  },
+  "footer": {
+    "copyright": "© {year} {siteName}. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  }
+}

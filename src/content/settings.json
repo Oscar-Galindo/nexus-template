@@ -1,0 +1,17 @@
+{
+  "siteName": "Nexus Starter",
+  "tagline": "Build amazing websites with ease",
+  "logo": "/images/logo.svg",
+  "socialLinks": {
+    "facebook": "https://facebook.com/yourpage",
+    "twitter": "https://twitter.com/yourhandle",
+    "instagram": "https://instagram.com/yourprofile",
+    "youtube": "https://youtube.com/yourchannel",
+    "linkedin": "https://linkedin.com/company/yourcompany"
+  },
+  "contactInfo": {
+    "email": "hello@example.com",
+    "phone": "+1 (555) 123-4567",
+    "address": "123 Main St, City, State 12345"
+  }
+}

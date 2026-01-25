@@ -1,0 +1,66 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Nosotros",
+    "services": "Servicios",
+    "sermons": "Sermones",
+    "events": "Eventos",
+    "blog": "Blog",
+    "contact": "Contacto",
+    "give": "Donar",
+    "prayerRequest": "Petición de Oración"
+  },
+  "forms": {
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "email": "Correo Electrónico",
+    "phone": "Teléfono",
+    "message": "Mensaje",
+    "businessName": "Nombre de Empresa",
+    "website": "Sitio Web",
+    "service": "Servicio de Interés",
+    "budget": "Presupuesto",
+    "timeline": "Plazo",
+    "prayerRequest": "Petición de Oración",
+    "keepPrivate": "Mantener esta petición privada",
+    "needsPastoralCare": "Me gustaría hablar con un pastor",
+    "submit": "Enviar",
+    "sending": "Enviando...",
+    "success": "¡Gracias! Nos pondremos en contacto pronto.",
+    "error": "Algo salió mal. Por favor intente de nuevo.",
+    "required": "Este campo es obligatorio",
+    "invalidEmail": "Por favor ingrese un correo válido"
+  },
+  "common": {
+    "readMore": "Leer Más",
+    "learnMore": "Saber Más",
+    "viewAll": "Ver Todo",
+    "watchNow": "Ver Ahora",
+    "listenNow": "Escuchar Ahora",
+    "backTo": "Volver a",
+    "share": "Compartir",
+    "loading": "Cargando...",
+    "noResults": "No se encontraron resultados"
+  },
+  "blog": {
+    "recentPosts": "Publicaciones Recientes",
+    "allPosts": "Todas las Publicaciones",
+    "categories": "Categorías",
+    "tags": "Etiquetas",
+    "postedOn": "Publicado el",
+    "by": "por"
+  },
+  "events": {
+    "upcomingEvents": "Próximos Eventos",
+    "pastEvents": "Eventos Pasados",
+    "allEvents": "Todos los Eventos",
+    "when": "Cuándo",
+    "where": "Dónde",
+    "register": "Registrarse"
+  },
+  "footer": {
+    "copyright": "© {year} {siteName}. Todos los derechos reservados.",
+    "privacyPolicy": "Política de Privacidad",
+    "termsOfService": "Términos de Servicio"
+  }
+}
