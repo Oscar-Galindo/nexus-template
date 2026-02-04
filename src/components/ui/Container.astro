@@ -1,0 +1,39 @@
+---
+/**
+ * Container Component - Online Nexus Marketing
+ * 
+ * Responsive container with max-width and padding
+ */
+
+export interface Props {
+  size?: 'narrow' | 'default' | 'wide' | 'full';
+  class?: string;
+  noPadding?: boolean;
+}
+
+const {
+  size = 'default',
+  class: className = '',
+  noPadding = false,
+} = Astro.props;
+
+const sizeClasses = {
+  narrow: 'max-w-3xl',           // 768px
+  default: 'max-w-[1280px]',     // 1280px (brand standard)
+  wide: 'max-w-[1440px]',        // 1440px
+  full: 'max-w-full',            // No max-width
+};
+
+const paddingClasses = noPadding ? '' : 'px-4 md:px-8 lg:px-16';
+
+const classes = [
+  sizeClasses[size],
+  'mx-auto',
+  paddingClasses,
+  className,
+].filter(Boolean).join(' ');
+---
+
+<div class={classes}>
+  <slot />
+</div>

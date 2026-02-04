@@ -1,0 +1,73 @@
+---
+/**
+ * Image Component - Online Nexus Marketing
+ * 
+ * Optimized image component using Cloudinary transformations
+ */
+
+import { getCloudinaryUrl, getResponsiveSrcSet, CommonSizes } from '@/lib/cloudinary';
+import type { CloudinaryOptions } from '@/lib/cloudinary';
+
+export interface Props {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  sizes?: string;
+  preset?: 'hero' | 'card' | 'avatar' | 'logo' | 'background' | 'thumbnail';
+  cloudinaryOptions?: CloudinaryOptions;
+  responsive?: boolean; // Generate srcset
+}
+
+const {
+  src,
+  alt,
+  width,
+  height,
+  class: className = '',
+  loading = 'lazy',
+  sizes = CommonSizes.content,
+  preset,
+  cloudinaryOptions = {},
+  responsive = true,
+} = Astro.props;
+
+// Apply preset if specified
+let finalOptions = cloudinaryOptions;
+if (preset) {
+  const presetDefaults: Record<string, CloudinaryOptions> = {
+    hero: { quality: 'auto:good', format: 'auto', crop: 'fill', gravity: 'auto' },
+    card: { aspectRatio: '4:3', quality: 'auto:good', format: 'auto', crop: 'fill', gravity: 'auto' },
+    avatar: { aspectRatio: '1:1', quality: 'auto', format: 'auto', crop: 'fill', gravity: 'face' },
+    logo: { quality: 'auto:best', format: 'auto', crop: 'scale' },
+    background: { quality: 'auto:eco', format: 'auto', crop: 'fill', blur: 20 },
+    thumbnail: { aspectRatio: '1:1', quality: 60, format: 'auto', crop: 'thumb', gravity: 'auto' },
+  };
+  finalOptions = { ...presetDefaults[preset], ...cloudinaryOptions };
+}
+
+// Add width/height to options if provided
+if (width) finalOptions.width = width;
+if (height) finalOptions.height = height;
+
+// Generate Cloudinary URL
+const cloudinaryUrl = getCloudinaryUrl(src, finalOptions);
+
+// Generate srcset for responsive images
+const srcset = responsive 
+  ? getResponsiveSrcSet(src, [640, 768, 1024, 1280, 1536, 1920], finalOptions)
+  : undefined;
+---
+
+<img
+  src={cloudinaryUrl}
+  alt={alt}
+  width={width}
+  height={height}
+  loading={loading}
+  sizes={responsive ? sizes : undefined}
+  srcset={srcset}
+  class={className}
+/>

@@ -1,0 +1,127 @@
+---
+/**
+ * Button Component - Online Nexus Marketing
+ * 
+ * Flexible button component with multiple variants and sizes
+ * Uses brand design tokens from uno.config.ts
+ */
+
+export interface Props {
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  fullWidth?: boolean;
+  icon?: string; // Lucide icon name
+  iconPosition?: 'left' | 'right';
+  external?: boolean; // Open in new tab
+  disabled?: boolean;
+  class?: string;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  href,
+  type = 'button',
+  fullWidth = false,
+  icon,
+  iconPosition = 'right',
+  external = false,
+  disabled = false,
+  class: className = '',
+} = Astro.props;
+
+// Build class list
+const variantClasses = {
+  primary: 'btn-primary',
+  secondary: 'btn-secondary',
+  outline: 'btn-outline',
+  ghost: 'btn-ghost',
+};
+
+const sizeClasses = {
+  sm: 'btn-sm',
+  md: '', // Default size
+  lg: 'btn-lg',
+};
+
+const classes = [
+  'btn',
+  variantClasses[variant],
+  sizeClasses[size],
+  fullWidth && 'w-full',
+  disabled && 'opacity-50 cursor-not-allowed pointer-events-none',
+  className,
+].filter(Boolean).join(' ');
+
+// Determine if rendering as link or button
+const isLink = !!href && !disabled;
+const Component = isLink ? 'a' : 'button';
+
+// Link attributes
+const linkAttrs = isLink ? {
+  href,
+  ...(external && { target: '_blank', rel: 'noopener noreferrer' }),
+} : {};
+
+// Button attributes
+const buttonAttrs = !isLink ? {
+  type,
+  disabled,
+} : {};
+---
+
+<Component
+  class={classes}
+  {...linkAttrs}
+  {...buttonAttrs}
+>
+  {icon && iconPosition === 'left' && (
+    <span class={`i-lucide-${icon}`} aria-hidden="true"></span>
+  )}
+  
+  <slot />
+  
+  {icon && iconPosition === 'right' && (
+    <span class={`i-lucide-${icon}`} aria-hidden="true"></span>
+  )}
+</Component>
+
+<style>
+  /* Additional hover effects */
+  .btn:not(:disabled):hover {
+    transform: translateY(-2px);
+  }
+  
+  .btn:not(:disabled):active {
+    transform: translateY(0);
+  }
+  
+  /* Loading state (if needed) */
+  .btn.loading {
+    position: relative;
+    color: transparent;
+  }
+  
+  .btn.loading::after {
+    content: '';
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    top: 50%;
+    left: 50%;
+    margin-left: -0.5rem;
+    margin-top: -0.5rem;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 0.6s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>

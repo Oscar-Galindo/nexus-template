@@ -1,0 +1,127 @@
+---
+/**
+ * Solution Section - Dark with System Status Panel
+ * Not management. Ownership.
+ */
+
+export interface Props {
+  headline: string;
+  headlineAccent: string;
+  point1Title: string;
+  point1Description: string;
+  point2Title: string;
+  point2Description: string;
+  point3Title: string;
+  point3Description: string;
+}
+
+const {
+  headline,
+  headlineAccent,
+  point1Title,
+  point1Description,
+  point2Title,
+  point2Description,
+  point3Title,
+  point3Description,
+} = Astro.props;
+---
+
+<section id="solution" class="w-full py-24 md:py-32 px-6 md:px-12 bg-black text-white scroll-mt-20">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-20 items-center">
+      <!-- Left Column: Content -->
+      <div>
+        <!-- Headline -->
+        <h2 class="text-4xl md:text-5xl font-medium tracking-tight leading-tight mb-10">
+          {headline}<br>
+          <span class="text-neutral-500">{headlineAccent}</span>
+        </h2>
+
+        <!-- Points -->
+        <div class="space-y-8">
+          <!-- Point 1 -->
+          <div>
+            <h3 class="text-xl font-medium text-white mb-2">{point1Title}</h3>
+            <p class="text-neutral-400 font-body leading-relaxed text-base">
+              {point1Description}
+            </p>
+          </div>
+
+          <!-- Point 2 (with left border) -->
+          <div class="flex flex-col gap-2 border-l-2 border-neutral-800 pl-6">
+            <h3 class="text-lg font-medium text-white mb-1">{point2Title}</h3>
+            <p class="text-neutral-400 font-body leading-relaxed text-sm">
+              {point2Description}
+            </p>
+          </div>
+
+          <!-- Point 3 -->
+          <div>
+            <h3 class="text-xl font-medium text-white mb-2">{point3Title}</h3>
+            <p class="text-neutral-400 font-body leading-relaxed text-base">
+              {point3Description}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: System Status Panel -->
+      <div class="bg-neutral-900 rounded-2xl p-6 md:p-8 border border-neutral-800 shadow-2xl">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-6 pb-6 border-b border-neutral-800">
+          <span class="text-neutral-500 text-xs font-mono uppercase tracking-widest">System Status</span>
+          <span class="text-white text-xs font-mono bg-neutral-800 px-2 py-1 rounded">All Systems Go</span>
+        </div>
+
+        <!-- Status Items -->
+        <div class="space-y-3">
+          <!-- Web Infrastructure -->
+          <div class="flex items-center gap-4 p-4 bg-black rounded-lg border border-neutral-800 hover:border-neutral-700 transition-colors">
+            <iconify-icon icon="solar:global-linear" class="text-white" width="20"></iconify-icon>
+            <span class="text-sm font-medium text-neutral-200">Web Infrastructure</span>
+            <div class="ml-auto flex items-center gap-2 text-xs text-green-500 font-medium">
+              <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span> Active
+            </div>
+          </div>
+
+          <!-- Email Operations -->
+          <div class="flex items-center gap-4 p-4 bg-black rounded-lg border border-neutral-800 hover:border-neutral-700 transition-colors">
+            <iconify-icon icon="solar:letter-linear" class="text-white" width="20"></iconify-icon>
+            <span class="text-sm font-medium text-neutral-200">Email Operations</span>
+            <div class="ml-auto flex items-center gap-2 text-xs text-green-500 font-medium">
+              <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span> Active
+            </div>
+          </div>
+
+          <!-- CRM Integrity -->
+          <div class="flex items-center gap-4 p-4 bg-black rounded-lg border border-neutral-800 hover:border-neutral-700 transition-colors">
+            <iconify-icon icon="solar:users-group-two-rounded-linear" class="text-white" width="20"></iconify-icon>
+            <span class="text-sm font-medium text-neutral-200">CRM Integrity</span>
+            <div class="ml-auto flex items-center gap-2 text-xs text-green-500 font-medium">
+              <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span> Active
+            </div>
+          </div>
+
+          <!-- Social Content Ops -->
+          <div class="flex items-center gap-4 p-4 bg-black rounded-lg border border-neutral-800 hover:border-neutral-700 transition-colors">
+            <iconify-icon icon="solar:feed-linear" class="text-white" width="20"></iconify-icon>
+            <span class="text-sm font-medium text-neutral-200">Social Content Ops</span>
+            <div class="ml-auto flex items-center gap-2 text-xs text-green-500 font-medium">
+              <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span> Active
+            </div>
+          </div>
+
+          <!-- Video Editing & Publishing -->
+          <div class="flex items-center gap-4 p-4 bg-black rounded-lg border border-neutral-800 hover:border-neutral-700 transition-colors">
+            <iconify-icon icon="solar:clapperboard-play-linear" class="text-white" width="20"></iconify-icon>
+            <span class="text-sm font-medium text-neutral-200">Video Editing & Publishing</span>
+            <div class="ml-auto flex items-center gap-2 text-xs text-green-500 font-medium">
+              <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span> Active
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

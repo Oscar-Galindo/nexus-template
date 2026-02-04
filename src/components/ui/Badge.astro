@@ -1,0 +1,45 @@
+---
+/**
+ * Badge Component - Online Nexus Marketing
+ * 
+ * Small label/tag component with variants
+ */
+
+export interface Props {
+  variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'neutral';
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  class: className = '',
+} = Astro.props;
+
+const variantClasses = {
+  primary: 'badge-primary',
+  secondary: 'badge-secondary',
+  success: 'badge-success',
+  warning: 'badge-warning',
+  error: 'badge-error',
+  neutral: 'bg-neutral-200 text-neutral-700',
+};
+
+const sizeClasses = {
+  sm: 'text-xs px-2 py-0.5',
+  md: 'text-sm px-3 py-1',
+  lg: 'text-base px-4 py-1.5',
+};
+
+const classes = [
+  'badge',
+  variantClasses[variant],
+  sizeClasses[size],
+  className,
+].filter(Boolean).join(' ');
+---
+
+<span class={classes}>
+  <slot />
+</span>

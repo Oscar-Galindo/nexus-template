@@ -1,0 +1,56 @@
+---
+/**
+ * Services Grid Section - Online Nexus Marketing
+ * 
+ * Display services/features in a grid
+ */
+
+import Container from '@/components/ui/Container.astro';
+import ServiceCard from '@/components/cards/ServiceCard.astro';
+import type { ServiceItem } from '@/lib/contentful';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  services: ServiceItem[];
+  class?: string;
+}
+
+const {
+  title = 'What We Do Best',
+  description = 'Comprehensive digital marketing solutions',
+  services = [],
+  class: className = '',
+} = Astro.props;
+---
+
+<section
+  class:list={[
+    'bg-white py-16 md:py-24 lg:py-32',
+    className
+  ]}
+>
+  <Container>
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h2 class="heading-2 mb-4">
+        {title}
+      </h2>
+      <p class="body-lg max-w-2xl mx-auto">
+        {description}
+      </p>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      {services.map((service) => (
+        <ServiceCard
+          icon={service.icon}
+          title={service.title}
+          description={service.description}
+          url={service.url}
+        />
+      ))}
+    </div>
+  </Container>
+</section>

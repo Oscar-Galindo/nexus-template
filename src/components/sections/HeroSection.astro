@@ -1,0 +1,93 @@
+---
+/**
+ * Hero Section - Online Nexus Marketing
+ * 
+ * Full-height hero with gradient background, headline, and CTAs
+ */
+
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import Badge from '@/components/ui/Badge.astro';
+import Icon from '@/components/ui/Icon.astro';
+import type { HeroSection as HeroType } from '@/lib/contentful';
+
+export interface Props extends Partial<HeroType> {
+  class?: string;
+}
+
+const {
+  badge,
+  headline,
+  subheadline,
+  ctaText,
+  ctaUrl,
+  secondaryCtaText,
+  secondaryCtaUrl,
+  class: className = '',
+} = Astro.props;
+---
+
+<section
+  class:list={[
+    'relative min-h-[90vh] flex items-center overflow-hidden',
+    'bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900',
+    className
+  ]}
+>
+  <!-- Decorative Background Shapes -->
+  <div class="absolute -top-20 -right-20 w-96 h-96 bg-secondary-500/10 rounded-full blur-3xl" aria-hidden="true"></div>
+  <div class="absolute -bottom-32 -left-32 w-80 h-80 bg-accent-500/10 rounded-full blur-3xl" aria-hidden="true"></div>
+
+  <Container>
+    <div class="text-center py-20 animate-fade-in">
+      <!-- Badge -->
+      {badge && (
+        <Badge
+          variant="neutral"
+          class="bg-white/20 text-white backdrop-blur-sm mb-6 animate-slide-up"
+        >
+          {badge}
+        </Badge>
+      )}
+
+      <!-- Headline -->
+      <h1 class="heading-1 text-white mb-6 max-w-4xl mx-auto animate-slide-up" style="animation-delay: 100ms">
+        {headline}
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="body-lg text-primary-100 max-w-2xl mx-auto mb-8 animate-slide-up" style="animation-delay: 200ms">
+        {subheadline}
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up" style="animation-delay: 300ms">
+        <Button
+          variant="secondary"
+          size="lg"
+          href={ctaUrl}
+        >
+          {ctaText}
+        </Button>
+
+        {secondaryCtaText && secondaryCtaUrl && (
+          <Button
+            variant="ghost"
+            size="lg"
+            href={secondaryCtaUrl}
+            class="bg-white/10 text-white hover:bg-white/20 border-0"
+            icon="play"
+            iconPosition="left"
+          >
+            {secondaryCtaText}
+          </Button>
+        )}
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <Icon name="chevron-down" size="xl" class="text-white/60" />
+      </div>
+    </div>
+  </Container>
+</section>

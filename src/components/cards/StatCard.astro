@@ -1,0 +1,83 @@
+---
+/**
+ * Stat Card - Online Nexus Marketing
+ * 
+ * Card for displaying a statistic/metric
+ */
+
+export interface Props {
+  value: string;
+  label: string;
+  prefix?: string;
+  suffix?: string;
+  class?: string;
+}
+
+const {
+  value,
+  label,
+  prefix = '',
+  suffix = '',
+  class: className = '',
+} = Astro.props;
+---
+
+<div
+  class:list={[
+    'text-center',
+    className
+  ]}
+>
+  <!-- Value -->
+  <div class="text-4xl md:text-5xl font-extrabold text-white mb-1">
+    {prefix && <span class="text-secondary-400">{prefix}</span>}
+    <span data-count-up data-target={value}>0</span>
+    {suffix && <span class="text-secondary-400">{suffix}</span>}
+  </div>
+
+  <!-- Label -->
+  <p class="text-primary-200 text-sm md:text-base">
+    {label}
+  </p>
+</div>
+
+<script>
+  // Count-up animation for stats
+  function animateCount(element: Element) {
+    const target = parseInt(element.getAttribute('data-target') || '0');
+    const duration = 2000; // 2 seconds
+    const increment = target / (duration / 16); // 60fps
+    let current = 0;
+
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      element.textContent = Math.floor(current).toString();
+    }, 16);
+  }
+
+  // Trigger animation when element is in view
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const countElement = entry.target.querySelector('[data-count-up]');
+          if (countElement && countElement.textContent === '0') {
+            animateCount(countElement);
+          }
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  // Observe all stat cards
+  document.querySelectorAll('[data-count-up]').forEach((element) => {
+    const card = element.closest('[class*="text-center"]');
+    if (card) observer.observe(card);
+  });
+</script>

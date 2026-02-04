@@ -1,0 +1,133 @@
+---
+/**
+ * Base Layout - Online Nexus Marketing
+ * 
+ * Foundation HTML structure with head, meta tags, and global styles
+ */
+
+import '../styles/brand.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  noIndex?: boolean;
+  canonicalUrl?: string;
+}
+
+const {
+  title = 'Online Nexus Marketing - Grow Your Business Online',
+  description = 'We help businesses thrive in the digital landscape with data-driven marketing strategies.',
+  image = '/og-image.jpg',
+  noIndex = false,
+  canonicalUrl,
+} = Astro.props;
+
+const siteUrl = import.meta.env.SITE_URL || Astro.url.origin;
+const currentUrl = canonicalUrl || Astro.url.href;
+const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <!-- Meta -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noIndex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={currentUrl} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={currentUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={currentUrl} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    
+    <!-- Fonts - Plus Jakarta Sans + Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    
+    <!-- Iconify for Solar icons -->
+    <script src="https://code.iconify.design/iconify-icon/2.0.0/iconify-icon.min.js"></script>
+    
+    <!-- Preload critical assets -->
+    <slot name="preload" />
+  </head>
+  
+  <body class="antialiased bg-neutral-50 text-neutral-700">
+    <!-- Main content -->
+    <slot />
+    
+    <!-- Scripts -->
+    <slot name="scripts" />
+    
+    <!-- Analytics (if configured) -->
+    {import.meta.env.GA_MEASUREMENT_ID && (
+      <script
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.GA_MEASUREMENT_ID}`}
+      ></script>
+      <script define:vars={{ gaId: import.meta.env.GA_MEASUREMENT_ID }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', gaId);
+      </script>
+    )}
+  </body>
+</html>
+
+<style is:global>
+  /* Smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Reduced motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    outline: 2px solid var(--color-primary-500);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  
+  /* Remove default focus outline on non-keyboard interactions */
+  *:focus:not(:focus-visible) {
+    outline: none;
+  }
+</style>

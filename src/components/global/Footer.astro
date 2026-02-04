@@ -1,0 +1,218 @@
+---
+/**
+ * Footer Component - Online Nexus Marketing
+ * 
+ * Site footer with links, social icons, and copyright
+ */
+
+import Logo from './Logo.astro';
+import Container from '@/components/ui/Container.astro';
+import Icon from '@/components/ui/Icon.astro';
+import type { Navigation, GlobalSettings } from '@/lib/contentful';
+
+export interface Props {
+  navigation?: Navigation;
+  settings?: GlobalSettings;
+}
+
+const {
+  navigation,
+  settings,
+} = Astro.props;
+
+const currentYear = new Date().getFullYear();
+const siteName = settings?.siteName || 'Online Nexus Marketing';
+const tagline = settings?.siteTagline || 'Growing businesses through digital excellence';
+
+// Footer link columns
+const footerLinks = navigation?.footerLinks || {
+  services: [
+    { label: 'SEO Optimization', url: '/services/seo' },
+    { label: 'PPC Advertising', url: '/services/ppc' },
+    { label: 'Social Media', url: '/services/social' },
+    { label: 'Content Marketing', url: '/services/content' },
+  ],
+  company: [
+    { label: 'About Us', url: '/about' },
+    { label: 'Careers', url: '/careers' },
+    { label: 'Blog', url: '/blog' },
+    { label: 'Contact', url: '/contact' },
+  ],
+  legal: [
+    { label: 'Privacy Policy', url: '/privacy' },
+    { label: 'Terms of Service', url: '/terms' },
+    { label: 'Cookie Policy', url: '/cookies' },
+  ],
+};
+
+// Social links
+const socialLinks = settings?.socialLinks || navigation?.socialLinks || {};
+
+// Contact info
+const contactEmail = settings?.contactEmail;
+const contactPhone = settings?.contactPhone;
+const contactAddress = settings?.contactAddress;
+---
+
+<footer class="bg-neutral-900 text-neutral-300">
+  <Container>
+    <div class="py-16 md:py-20">
+      <!-- Main Footer Content -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        
+        <!-- Column 1: Brand -->
+        <div class="lg:col-span-1">
+          <div class="mb-4">
+            <Logo
+              logo={settings?.logo}
+              siteName={siteName}
+              class="text-white"
+            />
+          </div>
+          <p class="text-neutral-400 mb-6">
+            {tagline}
+          </p>
+          
+          <!-- Social Icons -->
+          {(socialLinks.facebook || socialLinks.twitter || socialLinks.linkedin || socialLinks.instagram) && (
+            <div class="flex gap-3">
+              {socialLinks.facebook && (
+                <a
+                  href={socialLinks.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-10 h-10 bg-neutral-800 hover:bg-primary-500 rounded-lg flex items-center justify-center transition-colors duration-fast"
+                  aria-label="Facebook"
+                >
+                  <Icon name="facebook" size="md" class="text-white" />
+                </a>
+              )}
+              {socialLinks.twitter && (
+                <a
+                  href={socialLinks.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-10 h-10 bg-neutral-800 hover:bg-primary-500 rounded-lg flex items-center justify-center transition-colors duration-fast"
+                  aria-label="Twitter"
+                >
+                  <Icon name="twitter" size="md" class="text-white" />
+                </a>
+              )}
+              {socialLinks.linkedin && (
+                <a
+                  href={socialLinks.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-10 h-10 bg-neutral-800 hover:bg-primary-500 rounded-lg flex items-center justify-center transition-colors duration-fast"
+                  aria-label="LinkedIn"
+                >
+                  <Icon name="linkedin" size="md" class="text-white" />
+                </a>
+              )}
+              {socialLinks.instagram && (
+                <a
+                  href={socialLinks.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-10 h-10 bg-neutral-800 hover:bg-primary-500 rounded-lg flex items-center justify-center transition-colors duration-fast"
+                  aria-label="Instagram"
+                >
+                  <Icon name="instagram" size="md" class="text-white" />
+                </a>
+              )}
+            </div>
+          )}
+        </div>
+
+        <!-- Column 2: Services -->
+        <div>
+          <h3 class="text-white font-semibold text-lg mb-4">Services</h3>
+          <ul class="space-y-3">
+            {footerLinks.services.map(link => (
+              <li>
+                <a
+                  href={link.url}
+                  class="text-neutral-400 hover:text-white transition-colors duration-fast"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Column 3: Company -->
+        <div>
+          <h3 class="text-white font-semibold text-lg mb-4">Company</h3>
+          <ul class="space-y-3">
+            {footerLinks.company.map(link => (
+              <li>
+                <a
+                  href={link.url}
+                  class="text-neutral-400 hover:text-white transition-colors duration-fast"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Column 4: Contact -->
+        <div>
+          <h3 class="text-white font-semibold text-lg mb-4">Contact</h3>
+          <ul class="space-y-3">
+            {contactEmail && (
+              <li>
+                <a
+                  href={`mailto:${contactEmail}`}
+                  class="text-neutral-400 hover:text-white transition-colors duration-fast flex items-center gap-2"
+                >
+                  <Icon name="mail" size="sm" />
+                  <span>{contactEmail}</span>
+                </a>
+              </li>
+            )}
+            {contactPhone && (
+              <li>
+                <a
+                  href={`tel:${contactPhone}`}
+                  class="text-neutral-400 hover:text-white transition-colors duration-fast flex items-center gap-2"
+                >
+                  <Icon name="phone" size="sm" />
+                  <span>{contactPhone}</span>
+                </a>
+              </li>
+            )}
+            {contactAddress && (
+              <li class="text-neutral-400 flex items-start gap-2">
+                <Icon name="map-pin" size="sm" class="mt-1" />
+                <span>{contactAddress}</span>
+              </li>
+            )}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="border-t border-neutral-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <!-- Copyright -->
+        <p class="text-neutral-500 text-sm text-center md:text-left">
+          © {currentYear} {siteName}. All rights reserved.
+        </p>
+
+        <!-- Legal Links -->
+        <div class="flex flex-wrap gap-6 justify-center">
+          {footerLinks.legal.map(link => (
+            <a
+              href={link.url}
+              class="text-neutral-500 hover:text-neutral-300 text-sm transition-colors duration-fast"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </Container>
+</footer>

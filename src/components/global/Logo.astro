@@ -1,0 +1,44 @@
+---
+/**
+ * Logo Component - Online Nexus Marketing
+ * 
+ * Brand logo with fallback text
+ */
+
+import Image from '@/components/ui/Image.astro';
+import type { Asset } from 'contentful';
+
+export interface Props {
+  logo?: Asset;
+  siteName?: string;
+  class?: string;
+  imageClass?: string;
+}
+
+const {
+  logo,
+  siteName = 'Online Nexus',
+  class: className = '',
+  imageClass = '',
+} = Astro.props;
+
+const logoUrl = logo?.fields?.file?.url;
+const hasLogo = !!logoUrl;
+---
+
+{hasLogo ? (
+  <Image
+    src={`https:${logoUrl}`}
+    alt={`${siteName} Logo`}
+    preset="logo"
+    width={180}
+    height={45}
+    loading="eager"
+    responsive={false}
+    class={`h-10 w-auto ${imageClass}`}
+  />
+) : (
+  <span class={`font-bold text-xl text-primary-600 ${className}`}>
+    {siteName}
+  </span>
+)}

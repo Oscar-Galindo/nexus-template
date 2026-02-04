@@ -1,0 +1,45 @@
+---
+/**
+ * Step Card - Online Nexus Marketing
+ * 
+ * Card for displaying a process step with number
+ */
+
+export interface Props {
+  stepNumber: number;
+  title: string;
+  description: string;
+  class?: string;
+}
+
+const {
+  stepNumber,
+  title,
+  description,
+  class: className = '',
+} = Astro.props;
+
+const paddedNumber = stepNumber.toString().padStart(2, '0');
+---
+
+<div
+  class:list={[
+    'bg-white rounded-2xl p-6 text-center relative z-10',
+    className
+  ]}
+>
+  <!-- Step Number -->
+  <div class="w-16 h-16 bg-primary-500 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
+    {paddedNumber}
+  </div>
+
+  <!-- Title -->
+  <h3 class="heading-5 mb-2">
+    {title}
+  </h3>
+
+  <!-- Description -->
+  <p class="body-sm text-neutral-600">
+    {description}
+  </p>
+</div>

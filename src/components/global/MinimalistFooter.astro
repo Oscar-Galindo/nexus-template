@@ -1,0 +1,58 @@
+---
+/**
+ * Minimalist Footer - CTA + Logo
+ * Black background with white text
+ */
+
+export interface Props {
+  headline: string;
+  subheadline: string;
+  ctaText: string;
+  ctaLink: string;
+  logoUrl: string;
+}
+
+const {
+  headline,
+  subheadline,
+  ctaText,
+  ctaLink,
+  logoUrl,
+} = Astro.props;
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer id="contact" class="w-full py-24 px-6 md:px-12 bg-black text-white scroll-mt-20">
+  <div class="max-w-4xl mx-auto text-center">
+    <!-- Headline -->
+    <h2 class="text-4xl md:text-6xl font-medium tracking-tight mb-8">
+      {headline}
+    </h2>
+
+    <!-- Subheadline -->
+    <p class="text-xl text-neutral-400 mb-12 max-w-2xl mx-auto font-body font-light">
+      {subheadline}
+    </p>
+
+    <!-- CTA Button -->
+    <a
+      href={ctaLink}
+      class="inline-flex items-center justify-center px-8 py-4 bg-white text-black text-base font-medium rounded-lg hover:bg-neutral-200 transition-colors duration-200"
+    >
+      {ctaText}
+    </a>
+
+    <!-- Footer Bottom -->
+    <div class="mt-24 pt-8 border-t border-neutral-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-neutral-500">
+      <div>
+        <img
+          src={logoUrl}
+          alt="Online Nexus"
+          class="h-14 opacity-80"
+        />
+      </div>
+      <div>© {currentYear} Online Nexus Marketing</div>
+    </div>
+  </div>
+</footer>

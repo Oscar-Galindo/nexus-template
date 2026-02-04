@@ -1,0 +1,58 @@
+---
+/**
+ * How It Works Section - Online Nexus Marketing
+ * 
+ * Display process steps with connecting line
+ */
+
+import Container from '@/components/ui/Container.astro';
+import StepCard from '@/components/cards/StepCard.astro';
+import type { StepItem } from '@/lib/contentful';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  steps: StepItem[];
+  class?: string;
+}
+
+const {
+  title = 'How It Works',
+  description = 'Simple steps to grow your business',
+  steps = [],
+  class: className = '',
+} = Astro.props;
+---
+
+<section
+  class:list={[
+    'bg-neutral-50 py-16 md:py-24 lg:py-32 relative',
+    className
+  ]}
+>
+  <Container>
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h2 class="heading-2 mb-4">
+        {title}
+      </h2>
+      <p class="body-lg max-w-2xl mx-auto">
+        {description}
+      </p>
+    </div>
+
+    <!-- Progress Line (Desktop only) -->
+    <div class="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-primary-200 mx-auto max-w-[1080px]" aria-hidden="true"></div>
+
+    <!-- Steps Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {steps.map((step) => (
+        <StepCard
+          stepNumber={step.stepNumber}
+          title={step.title}
+          description={step.description}
+        />
+      ))}
+    </div>
+  </Container>
+</section>

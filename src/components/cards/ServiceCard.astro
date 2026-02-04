@@ -1,0 +1,62 @@
+---
+/**
+ * Service Card - Online Nexus Marketing
+ * 
+ * Card for displaying a service/feature with icon
+ */
+
+import Icon from '@/components/ui/Icon.astro';
+
+export interface Props {
+  icon: string; // Lucide icon name
+  title: string;
+  description: string;
+  url?: string;
+  class?: string;
+}
+
+const {
+  icon,
+  title,
+  description,
+  url,
+  class: className = '',
+} = Astro.props;
+
+const Component = url ? 'a' : 'div';
+const linkAttrs = url ? { href: url } : {};
+---
+
+<Component
+  class:list={[
+    'card-hover group relative',
+    className
+  ]}
+  {...linkAttrs}
+>
+  <!-- Icon Container -->
+  <div class="w-14 h-14 bg-primary-100 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-primary-500 transition-colors duration-normal">
+    <Icon
+      name={icon}
+      size="xl"
+      class="text-primary-600 group-hover:text-white transition-colors duration-normal"
+    />
+  </div>
+
+  <!-- Title -->
+  <h3 class="heading-5 mb-2">
+    {title}
+  </h3>
+
+  <!-- Description -->
+  <p class="body-sm text-neutral-600">
+    {description}
+  </p>
+
+  <!-- Arrow (hover indicator) -->
+  {url && (
+    <div class="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-normal">
+      <Icon name="arrow-right" size="md" class="text-primary-500" />
+    </div>
+  )}
+</Component>

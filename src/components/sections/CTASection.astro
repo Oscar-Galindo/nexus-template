@@ -1,0 +1,76 @@
+---
+/**
+ * CTA Section - Online Nexus Marketing
+ * 
+ * Bottom call-to-action section
+ */
+
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import type { HeroSection } from '@/lib/contentful';
+
+export interface Props extends Partial<HeroSection> {
+  variant?: 'primary' | 'secondary';
+  class?: string;
+}
+
+const {
+  headline = 'Ready to Grow Your Business?',
+  subheadline = "Let's create a custom marketing strategy that drives real results.",
+  ctaText = 'Schedule Free Consultation',
+  ctaUrl = '/contact',
+  secondaryCtaText = 'Call Us',
+  secondaryCtaUrl = 'tel:+1234567890',
+  variant = 'secondary',
+  class: className = '',
+} = Astro.props;
+
+const bgClass = variant === 'primary' 
+  ? 'bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900'
+  : 'bg-gradient-to-br from-secondary-500 via-secondary-600 to-secondary-700';
+---
+
+<section
+  class:list={[
+    bgClass,
+    'py-20 md:py-28',
+    className
+  ]}
+>
+  <Container size="narrow">
+    <div class="text-center">
+      <!-- Headline -->
+      <h2 class="heading-2 text-white mb-4">
+        {headline}
+      </h2>
+
+      <!-- Subheadline -->
+      <p class="body-lg text-white/90 mb-8">
+        {subheadline}
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button
+          variant="ghost"
+          size="lg"
+          href={ctaUrl}
+          class="bg-white text-secondary-600 hover:bg-neutral-100"
+        >
+          {ctaText}
+        </Button>
+
+        {secondaryCtaText && secondaryCtaUrl && (
+          <Button
+            variant="ghost"
+            size="lg"
+            href={secondaryCtaUrl}
+            class="bg-secondary-700/50 text-white hover:bg-secondary-700 border-0"
+          >
+            {secondaryCtaText}
+          </Button>
+        )}
+      </div>
+    </div>
+  </Container>
+</section>

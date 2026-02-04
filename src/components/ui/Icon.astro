@@ -1,0 +1,35 @@
+---
+/**
+ * Icon Component - Online Nexus Marketing
+ * 
+ * Wrapper for Lucide icons via UnoCSS preset-icons
+ */
+
+export interface Props {
+  name: string; // Lucide icon name (e.g., 'search', 'arrow-right')
+  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+  class?: string;
+}
+
+const {
+  name,
+  size = 'md',
+  class: className = '',
+} = Astro.props;
+
+const sizeClasses = {
+  sm: 'text-sm',      // 14px
+  md: 'text-base',    // 16px
+  lg: 'text-xl',      // 20px
+  xl: 'text-2xl',     // 24px
+  '2xl': 'text-4xl',  // 36px
+};
+
+const classes = [
+  `i-lucide-${name}`,
+  sizeClasses[size],
+  className,
+].filter(Boolean).join(' ');
+---
+
+<span class={classes} aria-hidden="true"></span>

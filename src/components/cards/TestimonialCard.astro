@@ -1,0 +1,78 @@
+---
+/**
+ * Testimonial Card - Online Nexus Marketing
+ * 
+ * Card for displaying customer testimonials
+ */
+
+import Image from '@/components/ui/Image.astro';
+import Icon from '@/components/ui/Icon.astro';
+import type { Asset } from 'contentful';
+
+export interface Props {
+  quote: string;
+  rating: number;
+  authorName: string;
+  authorTitle: string;
+  authorCompany: string;
+  authorPhoto?: Asset;
+  class?: string;
+}
+
+const {
+  quote,
+  rating = 5,
+  authorName,
+  authorTitle,
+  authorCompany,
+  authorPhoto,
+  class: className = '',
+} = Astro.props;
+
+const photoUrl = authorPhoto?.fields?.file?.url;
+const stars = Array.from({ length: 5 }, (_, i) => i < rating);
+---
+
+<div
+  class:list={[
+    'bg-neutral-50 rounded-2xl p-8 md:p-10 relative',
+    className
+  ]}
+>
+  <!-- Quote Mark (decorative) -->
+  <span class="text-6xl text-primary-200 absolute -top-4 -left-2 font-serif" aria-hidden="true">"</span>
+
+  <!-- Quote Text -->
+  <blockquote class="text-xl md:text-2xl text-neutral-700 leading-relaxed mb-6 relative z-10">
+    {quote}
+  </blockquote>
+
+  <!-- Star Rating -->
+  <div class="flex gap-1 text-secondary-500 mb-6">
+    {stars.map((filled) => (
+      <Icon name={filled ? 'star' : 'star'} size="md" class={filled ? 'fill-current' : ''} />
+    ))}
+  </div>
+
+  <!-- Author Info -->
+  <div class="flex items-center gap-4">
+    {photoUrl && (
+      <Image
+        src={`https:${photoUrl}`}
+        alt={authorName}
+        preset="avatar"
+        width={56}
+        height={56}
+        class="w-14 h-14 rounded-full object-cover"
+      />
+    )}
+    <div>
+      <div class="font-semibold text-neutral-900">
+        {authorName}
+      </div>
+      <div class="text-sm text-neutral-500">
+        {authorTitle}{authorCompany && `, ${authorCompany}`}
+      </div>
+    </div>
+  </div>
+</div>

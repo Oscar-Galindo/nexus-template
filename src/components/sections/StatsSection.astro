@@ -1,0 +1,44 @@
+---
+/**
+ * Stats Section - Online Nexus Marketing
+ * 
+ * Display key metrics/statistics
+ */
+
+import Container from '@/components/ui/Container.astro';
+import StatCard from '@/components/cards/StatCard.astro';
+import type { StatItem } from '@/lib/contentful';
+
+export interface Props {
+  stats: StatItem[];
+  class?: string;
+}
+
+const {
+  stats = [],
+  class: className = '',
+} = Astro.props;
+---
+
+{stats.length > 0 && (
+  <section
+    class:list={[
+      'bg-gradient-to-r from-primary-600 to-primary-800 py-16 md:py-20',
+      className
+    ]}
+  >
+    <Container>
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+        {stats.map((stat) => (
+          <StatCard
+            value={stat.value}
+            label={stat.label}
+            prefix={stat.prefix}
+            suffix={stat.suffix}
+          />
+        ))}
+      </div>
+    </Container>
+  </section>
+)}

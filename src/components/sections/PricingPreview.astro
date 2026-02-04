@@ -1,0 +1,74 @@
+---
+/**
+ * Pricing Preview Section - Online Nexus Marketing
+ * 
+ * Display pricing tiers (preview of full pricing page)
+ */
+
+import Container from '@/components/ui/Container.astro';
+import PricingCard from '@/components/cards/PricingCard.astro';
+import type { PricingTier } from '@/lib/contentful';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  pricingTiers: PricingTier[];
+  showAllLink?: boolean;
+  class?: string;
+}
+
+const {
+  title = 'Simple, Transparent Pricing',
+  description = 'Choose your growth plan',
+  pricingTiers = [],
+  showAllLink = true,
+  class: className = '',
+} = Astro.props;
+---
+
+{pricingTiers.length > 0 && (
+  <section
+    class:list={[
+      'bg-white py-16 md:py-24 lg:py-32',
+      className
+    ]}
+  >
+    <Container>
+      <!-- Section Header -->
+      <div class="text-center mb-12">
+        <h2 class="heading-2 mb-4">
+          {title}
+        </h2>
+        <p class="body-lg max-w-2xl mx-auto">
+          {description}
+        </p>
+      </div>
+
+      <!-- Pricing Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-start">
+        {pricingTiers.slice(0, 3).map((tier) => (
+          <PricingCard
+            name={tier.name}
+            price={tier.price}
+            period={tier.period}
+            description={tier.description}
+            features={tier.features}
+            ctaText={tier.ctaText}
+            ctaUrl={tier.ctaUrl}
+            featured={tier.featured}
+            badge={tier.badge}
+          />
+        ))}
+      </div>
+
+      <!-- See Full Pricing Link -->
+      {showAllLink && (
+        <div class="text-center mt-8">
+          <a href="/pricing" class="link font-medium">
+            See Full Pricing →
+          </a>
+        </div>
+      )}
+    </Container>
+  </section>
+)}

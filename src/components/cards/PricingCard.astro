@@ -1,0 +1,102 @@
+---
+/**
+ * Pricing Card - Online Nexus Marketing
+ * 
+ * Card for displaying pricing tiers
+ */
+
+import Button from '@/components/ui/Button.astro';
+import Badge from '@/components/ui/Badge.astro';
+import Icon from '@/components/ui/Icon.astro';
+
+export interface Props {
+  name: string;
+  price: string;
+  period: string;
+  description: string;
+  features: string[];
+  ctaText: string;
+  ctaUrl: string;
+  featured?: boolean;
+  badge?: string;
+  class?: string;
+}
+
+const {
+  name,
+  price,
+  period,
+  description,
+  features,
+  ctaText,
+  ctaUrl,
+  featured = false,
+  badge,
+  class: className = '',
+} = Astro.props;
+---
+
+<div
+  class:list={[
+    'card relative',
+    featured ? 'border-2 border-primary-500' : 'border border-neutral-200',
+    className
+  ]}
+>
+  <!-- Featured Badge -->
+  {(featured || badge) && (
+    <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+      <Badge variant="primary">
+        {badge || 'Most Popular'}
+      </Badge>
+    </div>
+  )}
+
+  <!-- Plan Name -->
+  <h3 class="heading-5 mb-2">
+    {name}
+  </h3>
+
+  <!-- Price -->
+  <div class="mb-4">
+    <span class="text-4xl font-extrabold text-neutral-900">
+      ${price}
+    </span>
+    <span class="text-neutral-500 text-lg">
+      /{period}
+    </span>
+  </div>
+
+  <!-- Description -->
+  <p class="body-sm text-neutral-600 mb-6">
+    {description}
+  </p>
+
+  <!-- Divider -->
+  <div class="border-t border-neutral-200 my-6"></div>
+
+  <!-- Features List -->
+  <ul class="space-y-3 mb-8">
+    {features.map(feature => (
+      <li class="flex items-start gap-3">
+        <Icon
+          name="check"
+          size="md"
+          class="text-accent-500 mt-0.5 flex-shrink-0"
+        />
+        <span class="text-neutral-600">
+          {feature}
+        </span>
+      </li>
+    ))}
+  </ul>
+
+  <!-- CTA Button -->
+  <Button
+    variant={featured ? 'primary' : 'outline'}
+    href={ctaUrl}
+    fullWidth
+  >
+    {ctaText}
+  </Button>
+</div>
